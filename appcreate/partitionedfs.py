@@ -262,7 +262,6 @@ class PartitionedMount(Mount):
                 subprocess.call(["/sbin/parted", "-s", self.disks[p['disk']]['disk'].device, "set", str(p['num']), "boot", "on"])
                 subprocess.call(["/sbin/mkfs.vfat", "-n", "uboot", p['device']])
                 p['UUID'] = self.__getuuid(p['device'])
-                continue
 
             if mp == 'biosboot':
                 subprocess.call(["/sbin/parted", "-s", self.disks[p['disk']]['disk'].device, "set", "1", "bios_grub", "on"])
